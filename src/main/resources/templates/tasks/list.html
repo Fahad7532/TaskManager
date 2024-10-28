@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Task Manager</title>
+</head>
+<body>
+<h1>Task List</h1>
+<a th:href="@{/tasks/create}">Create New Task</a>
+<table>
+    <thead>
+    <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Completed</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="task : ${tasks}">
+        <td th:text="${task.title}">Sample Title</td>
+        <td th:text="${task.description}">Sample Description</td>
+        <td th:text="${task.completed ? 'Yes' : 'No'}">No</td>
+        <td>
+            <a th:href="@{/tasks/edit/{id}(id=${task.id})}">Edit</a> |
+            <a th:href="@{/tasks/delete/{id}(id=${task.id})}" onclick="return confirm('Are you sure?')">Delete</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

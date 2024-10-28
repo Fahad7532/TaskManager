@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Create Task</title>
+</head>
+<body>
+<h1>Create Task</h1>
+<form th:action="@{/tasks/create}" th:object="${task}" method="post">
+    <label>Title: <input type="text" th:field="*{title}" required /></label><br/>
+    <label>Description: <input type="text" th:field="*{description}" required /></label><br/>
+    <label>Completed: <input type="checkbox" th:field="*{completed}" /></label><br/>
+    <button type="submit">Save</button>
+</form>
+</body>
+</html>
